@@ -1,0 +1,40 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.6.2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+
+      - name: Build static output
+        run: pnpm build
+
+      - name: Prepare Google credentials
+        run: |
+          printf '%s' '${{ secrets.FIREBASE_SERVICE_ACCOUNT_STAGING }}' > "$RUNNER_TEMP/gcp-staging.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/gcp-staging.json" >> "$GITHUB_ENV"
+
+      - name: Deploy to Firebase Hosting (staging)
+        run: pnpm dlx firebase-tools deploy --project staging --only hosting

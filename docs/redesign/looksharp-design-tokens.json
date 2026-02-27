@@ -1,0 +1,59 @@
+{
+  "color": {
+    "brandTeal": "#00958c",
+    "brandDeep": "#016b81",
+    "brandDark": "#063d44",
+    "brandMint": "#0cab8f",
+    "brandMist": "#dbf1dc",
+    "brandYellow": "#ebe81a",
+    "brandOrange": "#fd5211",
+    "brandSky": "#0aacf6",
+    "inkStrong": "#112022",
+    "ink": "#22393d",
+    "inkSoft": "#445f62",
+    "background": "#f3f8f6",
+    "surface": "#ffffff",
+    "border": "rgba(6, 61, 68, 0.14)"
+  },
+  "typography": {
+    "fontFamily": "Sora",
+    "h1": "clamp(2rem, 4.8vw, 3.8rem)",
+    "h2": "clamp(1.6rem, 3vw, 2.6rem)",
+    "h3": "clamp(1.08rem, 2vw, 1.3rem)",
+    "body": "1rem",
+    "small": "0.84rem",
+    "lineHeightBody": 1.52
+  },
+  "spacing": {
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "5": "20px",
+    "6": "24px",
+    "7": "28px",
+    "8": "32px",
+    "10": "40px"
+  },
+  "radius": {
+    "sm": "12px",
+    "md": "18px",
+    "lg": "24px",
+    "xl": "32px",
+    "pill": "999px"
+  },
+  "shadow": {
+    "sm": "0 10px 24px rgba(6, 61, 68, 0.07)",
+    "md": "0 16px 36px rgba(6, 61, 68, 0.1)",
+    "lg": "0 24px 60px rgba(6, 61, 68, 0.16)"
+  },
+  "motion": {
+    "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+    "fast": "140ms",
+    "mid": "220ms"
+  },
+  "breakpoints": {
+    "mobile": 390,
+    "tablet": 768,
+    "desktop": 1280
+  }
+}
