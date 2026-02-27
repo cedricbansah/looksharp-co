@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
 jobs:
   deploy-production:
     runs-on: ubuntu-latest
@@ -27,6 +31,15 @@ jobs:
 
       - name: Install deps
         run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
 
       - name: Launch gate validation
         env:
@@ -54,4 +67,4 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/gcp-production.json" >> "$GITHUB_ENV"
 
       - name: Deploy to Firebase Hosting (production)
-        run: pnpm dlx firebase-tools deploy --project production --only hosting
+        run: pnpm dlx firebase-tools deploy --project looksharpco --only hosting

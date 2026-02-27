@@ -3,7 +3,11 @@ name: Deploy Staging
 on:
   push:
     branches:
-      - staging
+      - dev
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
 
 jobs:
   deploy-staging:
@@ -28,7 +32,23 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
 
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
       - name: Build static output
+        env:
+          NEXT_PUBLIC_WEB_APP_URL: ${{ vars.NEXT_PUBLIC_WEB_APP_URL }}
+          NEXT_PUBLIC_IOS_APP_URL: ${{ vars.NEXT_PUBLIC_IOS_APP_URL }}
+          NEXT_PUBLIC_ANDROID_APP_URL: ${{ vars.NEXT_PUBLIC_ANDROID_APP_URL }}
+          NEXT_PUBLIC_SUPPORT_EMAIL: ${{ vars.NEXT_PUBLIC_SUPPORT_EMAIL }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
         run: pnpm build
 
       - name: Prepare Google credentials
@@ -37,4 +57,4 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/gcp-staging.json" >> "$GITHUB_ENV"
 
       - name: Deploy to Firebase Hosting (staging)
-        run: pnpm dlx firebase-tools deploy --project staging --only hosting
+        run: pnpm dlx firebase-tools deploy --project looksharpco-staging --only hosting
