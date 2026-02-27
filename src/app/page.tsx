@@ -13,9 +13,9 @@ export default function HomePage() {
   return (
     <>
       <LandingStructuredData />
-      <div className="page-shell">
+      <div className="lovable-page">
         <StickyHeader />
-        <main className="site-main">
+        <main>
           <HeroSection />
           <CategoryRailSection />
           <HowItWorksSection />

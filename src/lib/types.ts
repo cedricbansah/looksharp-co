@@ -54,17 +54,20 @@ export interface DealCategory {
   title: string;
   description: string;
   tag: string;
+  icon?: string;
 }
 
 export interface OfferTile {
   id: string;
   badge: string;
+  badgeVariant?: 'default' | 'secondary' | 'destructive';
   brand: string;
   title: string;
   savings: string;
   category: string;
   disclaimer: string;
   isPlaceholder: boolean;
+  image?: string;
 }
 
 export interface ProofStat {

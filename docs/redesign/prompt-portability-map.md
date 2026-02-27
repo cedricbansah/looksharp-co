@@ -1,5 +1,8 @@
 # Prompt Portability Map (Lovable -> Next.js Landing)
 
+> Status: Historical context only.  
+> Primary execution source: `docs/redesign/landing-section-spec.md`.
+
 | Prompt Item | Portability | Target File | Decision |
 | --- | --- | --- | --- |
 | Section order: header -> hero -> category -> how-it-works -> offers -> trust -> FAQ -> final CTA -> footer | Direct | `src/app/page.tsx` | Keep current composition order as implemented. |

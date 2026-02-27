@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 
 import { navItems } from '@/content/site';
 
-import { StartEarningLink } from '@/components/StartEarningLink';
-
 export function StickyHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,20 +30,12 @@ export function StickyHeader() {
       }
     };
 
-    const onResize = (): void => {
-      if (window.innerWidth > 920) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
-    window.addEventListener('resize', onResize);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
-      window.removeEventListener('resize', onResize);
     };
   }, [isMobileMenuOpen]);
 
@@ -54,41 +44,50 @@ export function StickyHeader() {
   };
 
   return (
-    <header
-      className={`site-header${isScrolled ? ' site-header-scrolled' : ''}${
-        isMobileMenuOpen ? ' site-header-menu-open' : ''
-      }`}
-    >
-      <a href="#top" className="brand-link" aria-label="LookSharp home">
-        <img
-          src="/brand/logo-dark-teal.svg"
-          alt="LookSharp"
-          width={132}
-          height={44}
-        />
-      </a>
-
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href} className="nav-link">
-            {item.label}
+    <>
+      <header className={`site-header${isScrolled ? ' site-header-scrolled' : ''}`}>
+        <div className="header-inner">
+          <a href="#top" className="brand-wordmark" aria-label="LookSharp home">
+            <img
+              src="/brand/logo-mark-brand.svg"
+              alt=""
+              aria-hidden="true"
+              className="brand-mark-image"
+              width={28}
+              height={24}
+            />
+            <span>
+              Look<span>Sharp</span>
+            </span>
           </a>
-        ))}
-      </nav>
 
-      <div className="header-actions">
-        <StartEarningLink section="header" className="header-cta" />
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="nav-link">
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-        <button
-          type="button"
-          className="mobile-menu-button"
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="looksharp-mobile-menu"
-          onClick={() => setIsMobileMenuOpen((open) => !open)}
-        >
-          {isMobileMenuOpen ? 'Close' : 'Menu'}
-        </button>
-      </div>
+          <div className="header-actions">
+            <a href="#cta" className="header-outline-cta">
+              Start Earning
+            </a>
+            <a href="#cta" className="header-solid-cta">
+              Get the App
+            </a>
+            <button
+              type="button"
+              className="mobile-menu-button"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="looksharp-mobile-menu"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+            >
+              {isMobileMenuOpen ? 'Close' : 'Menu'}
+            </button>
+          </div>
+        </div>
+      </header>
 
       {isMobileMenuOpen ? (
         <div
@@ -97,23 +96,26 @@ export function StickyHeader() {
           role="dialog"
           aria-label="Mobile navigation menu"
         >
-          <div className="mobile-menu-sheet">
-            <nav className="mobile-menu-links" aria-label="Mobile navigation links">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="mobile-nav-link"
-                  onClick={closeMobileMenu}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <StartEarningLink section="mobile-menu" className="mobile-cta" />
-            </nav>
-          </div>
+          <nav className="mobile-menu-links" aria-label="Mobile navigation links">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="mobile-nav-link"
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a href="#cta" className="mobile-cta" onClick={closeMobileMenu}>
+              Start Earning
+            </a>
+            <a href="#cta" className="mobile-cta mobile-cta-solid" onClick={closeMobileMenu}>
+              Get the App
+            </a>
+          </nav>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }

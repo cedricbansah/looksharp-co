@@ -8,247 +8,261 @@ import type {
 } from '@/lib/types';
 
 export const navItems = [
-  { label: 'How it works', href: '#how-it-works' },
+  { label: 'How It Works', href: '#how-it-works' },
   { label: 'Offers', href: '#offers' },
   { label: 'Trust', href: '#trust' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Get Started', href: '#get-started' }
+  { label: 'FAQ', href: '#faq' }
 ];
 
 export const heroContent = {
-  badge: 'Insightis Africa Company',
-  title: 'One app for smarter shopping, paid opinions, and faster rewards.',
+  badge: 'Discover. Save. Earn.',
+  title: 'Shop Smarter, Earn Rewards Every Day',
   description:
-    'LookSharp helps you discover verified discounts and complete short surveys in one place, then convert points into cash with a clear mobile-money payout flow.',
-  trustMicroCopy:
-    'Balanced access across web, iOS, and Android with secure payout controls.',
+    'Unlock exclusive discounts from top brands across Ghana, complete quick surveys to earn points, and convert them into real cash through your preferred payout channel.',
+  trustMicroCopy: 'Exclusive Discounts • Earn Real Cash • Safe & Trusted',
   valueHighlights: [
-    { value: '24h', label: 'Typical payout turnaround' },
-    { value: '125k+', label: 'Monthly survey completions' },
-    { value: '40k+', label: 'Active members' }
+    { value: '50K+', label: 'Users' },
+    { value: 'GH₵ 2M+', label: 'Earned' },
+    { value: '500+', label: 'Brands' }
   ],
-  heroValuePoints: [
-    'Find app-only deals organized by shopping category.',
-    'Complete short surveys and track points in real time.',
-    'Redeem confidently with transparent payout status updates.'
-  ]
+  heroValuePoints: ['Exclusive Discounts', 'Earn Real Cash', 'Safe & Trusted']
 };
 
 export const dealCategories: DealCategory[] = [
   {
-    id: 'fashion',
-    title: 'Fashion',
-    description: 'Discount codes and seasonal drops from style partners.',
-    tag: 'CAT-01'
+    id: 'shopping',
+    title: 'Shopping',
+    description: 'Everyday product deals and checkout discounts.',
+    tag: 'CAT-01',
+    icon: '/icons/categories/shopping.svg'
   },
   {
-    id: 'grocery',
-    title: 'Grocery',
-    description: 'Everyday basket savings and local delivery offers.',
-    tag: 'CAT-02'
+    id: 'food-drink',
+    title: 'Food & Drink',
+    description: 'Meal vouchers and buy-one-get-one offers.',
+    tag: 'CAT-02',
+    icon: '/icons/categories/food-drink.svg'
+  },
+  {
+    id: 'travel',
+    title: 'Travel',
+    description: 'Transport credits and destination specials.',
+    tag: 'CAT-03',
+    icon: '/icons/categories/travel.svg'
   },
   {
     id: 'tech',
     title: 'Tech',
-    description: 'Phone accessories, data bundles, and device deals.',
-    tag: 'CAT-03'
+    description: 'Gadgets, bundles, and electronics deals.',
+    tag: 'CAT-04',
+    icon: '/icons/categories/tech.svg'
   },
   {
-    id: 'mobility',
-    title: 'Mobility',
-    description: 'Transport and travel offers for daily commutes.',
-    tag: 'CAT-04'
+    id: 'health',
+    title: 'Health',
+    description: 'Wellness offers and pharmacy savings.',
+    tag: 'CAT-05',
+    icon: '/icons/categories/health.svg'
   },
   {
-    id: 'food',
-    title: 'Food',
-    description: 'Restaurant and quick-service vouchers from local brands.',
-    tag: 'CAT-05'
+    id: 'fashion',
+    title: 'Fashion',
+    description: 'Style drops and limited-time fashion codes.',
+    tag: 'CAT-06',
+    icon: '/icons/categories/fashion.svg'
   },
   {
-    id: 'lifestyle',
-    title: 'Lifestyle',
-    description: 'Entertainment, personal care, and wellness promotions.',
-    tag: 'CAT-06'
+    id: 'auto',
+    title: 'Auto',
+    description: 'Fuel, rides, and service promotions.',
+    tag: 'CAT-07',
+    icon: '/icons/categories/auto.svg'
+  },
+  {
+    id: 'education',
+    title: 'Education',
+    description: 'Books, courses, and learning discounts.',
+    tag: 'CAT-08',
+    icon: '/icons/categories/education.svg'
   }
 ];
 
 export const steps = [
   {
-    title: 'Create your profile and preferences',
+    title: 'Discover Deals',
     description:
-      'Sign up in minutes and set the categories you care about to tailor your offers and survey opportunities.'
+      'Browse exclusive discounts from everyday brands in Accra, Kumasi, Takoradi, and beyond.'
   },
   {
-    title: 'Claim offers and complete quick surveys',
+    title: 'Complete & Earn',
     description:
-      'Use verified discount codes while shopping, then complete short surveys to keep your points balance growing.'
+      'Take quick surveys relevant to your market and earn reward points for sharing your opinions.'
   },
   {
-    title: 'Convert points and cash out',
+    title: 'Cash Out',
     description:
-      'Redeem points through the app and withdraw to your mobile money wallet with status tracking at each step.'
+      'Convert your earned points into real cash and withdraw to supported Ghana payout channels.'
   }
 ];
 
 export const featuredOffers: OfferTile[] = [
   {
-    id: 'offer-1',
-    badge: 'Featured',
-    brand: 'MarketSquare',
-    title: 'Weekend Basket Saver',
-    savings: 'Up to 18% off selected grocery lines',
-    category: 'Grocery',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
-  },
-  {
-    id: 'offer-2',
-    badge: 'Top Pick',
-    brand: 'StylePort',
-    title: 'Flash Apparel Drop',
-    savings: 'Save 15% with app-only code windows',
-    category: 'Fashion',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
-  },
-  {
-    id: 'offer-3',
-    badge: 'New',
-    brand: 'DataDirect',
-    title: 'Monthly Bundle Boost',
-    savings: 'Earn points on selected data add-ons',
+    id: 'offer-techmart',
+    badge: 'Hot Deal',
+    badgeVariant: 'destructive',
+    brand: 'AccraTech',
+    title: '20% Off All Electronics',
+    savings: 'Save up to GH₵ 500',
     category: 'Tech',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
+    disclaimer: 'Valid until stocks last. T&Cs apply.',
+    isPlaceholder: true,
+    image: '/icons/categories/tech.svg'
   },
   {
-    id: 'offer-4',
-    badge: 'Popular',
-    brand: 'RideNow',
-    title: 'Daily Commute Credit',
-    savings: 'Discounted ride credits + bonus survey points',
-    category: 'Mobility',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
+    id: 'offer-freshbite',
+    badge: 'New',
+    badgeVariant: 'default',
+    brand: 'FreshBite GH',
+    title: 'Buy 1 Get 1 Free Meals',
+    savings: 'Save up to GH₵ 120',
+    category: 'Food & Drink',
+    disclaimer: 'Selected restaurants only. T&Cs apply.',
+    isPlaceholder: true,
+    image: '/icons/categories/food-drink.svg'
   },
   {
-    id: 'offer-5',
+    id: 'offer-stylehub',
     badge: 'Limited',
-    brand: 'BiteHub',
-    title: 'Lunch Hour Rewards',
-    savings: 'Code-based meal savings with reward multipliers',
-    category: 'Food',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
-  },
-  {
-    id: 'offer-6',
-    badge: 'Trending',
-    brand: 'WellLife',
-    title: 'Care and Wellness Pack',
-    savings: 'Member pricing on selected wellness products',
-    category: 'Lifestyle',
-    disclaimer: 'Representative offer placeholder for staging review.',
-    isPlaceholder: true
+    badgeVariant: 'secondary',
+    brand: 'StyleHub Ghana',
+    title: '40% Off Fashion Week',
+    savings: 'Save up to GH₵ 350',
+    category: 'Fashion',
+    disclaimer: 'Online orders only. Ends Sunday. T&Cs apply.',
+    isPlaceholder: true,
+    image: '/icons/categories/fashion.svg'
   }
 ];
 
 export const proofStats: ProofStat[] = [
   {
-    id: 'payout-speed',
-    label: 'Typical payout turnaround',
-    value: 'Under 24 hours',
-    isPlaceholder: true
-  },
-  {
-    id: 'survey-completions',
-    label: 'Monthly survey completions',
-    value: '125k+',
-    isPlaceholder: true
-  },
-  {
     id: 'active-users',
-    label: 'Active members',
-    value: '40k+',
+    label: 'Active Users',
+    value: '500K+',
+    isPlaceholder: true
+  },
+  {
+    id: 'rewards-paid',
+    label: 'Rewards Paid Out',
+    value: 'GH₵ 12M+',
+    isPlaceholder: true
+  },
+  {
+    id: 'brand-partners',
+    label: 'Brand Partners',
+    value: '1,200+',
+    isPlaceholder: true
+  },
+  {
+    id: 'uptime',
+    label: 'Uptime',
+    value: '99.9%',
     isPlaceholder: true
   }
 ];
 
 export const assuranceItems: AssuranceItem[] = [
   {
-    id: 'secure-payout',
-    title: 'Secure payout controls',
-    description:
-      'Reward conversion and cashout requests follow verification checks to keep your account protected.'
+    id: 'encryption',
+    title: 'Bank-level encryption',
+    description: 'Security controls protect account and rewards activity.'
   },
   {
-    id: 'transparent-tracking',
-    title: 'Transparent reward tracking',
-    description:
-      'Track deal redemptions, survey completions, and payout status directly in your LookSharp journey.'
+    id: 'privacy-certified',
+    title: 'Data privacy certified',
+    description: 'Platform operations follow privacy-oriented safeguards.'
   },
   {
-    id: 'verified-offers',
-    title: 'Verified offer partners',
-    description:
-      'Offer placements are reviewed before publication so members can claim promotions with confidence.'
+    id: 'instant-withdrawals',
+    title: 'Instant withdrawals',
+    description: 'Redeemed rewards can move quickly to supported payouts.'
+  },
+  {
+    id: 'support',
+    title: '24/7 support',
+    description: 'Support access is available for account and payout issues.'
   }
 ];
 
 export const testimonials: TestimonialItem[] = [
   {
-    id: 'user-1',
+    id: 'amina',
     quote:
-      'I use LookSharp before every weekend shop. The discounts are useful and payout updates are clear.',
-    author: 'LookSharp Member',
-    role: 'Accra',
+      'LookSharp helped me save over GH₵ 1,500 on textbooks and meals this semester. The surveys are quick and the cashout process is smooth.',
+    author: 'Amina K.',
+    role: 'Student, Accra',
     isPlaceholder: true
   },
   {
-    id: 'user-2',
+    id: 'david',
     quote:
-      'The survey tasks are short and I can cash out without guessing what happens next.',
-    author: 'LookSharp Member',
-    role: 'Kumasi',
+      'I love how easy it is to discover new deals. I have earned enough points to cover my monthly data bundle. Highly recommend!',
+    author: 'David M.',
+    role: 'Freelancer, Kumasi',
+    isPlaceholder: true
+  },
+  {
+    id: 'grace',
+    quote:
+      'The app is clean, fast, and the rewards are real. One of the best savings apps I have used in Ghana. Five stars from me!',
+    author: 'Grace W.',
+    role: 'Professional, Takoradi',
     isPlaceholder: true
   }
 ];
 
 export const faqs: FaqItem[] = [
   {
-    id: 'eligibility',
-    group: 'membership',
-    question: 'Who can join LookSharp?',
+    id: 'what-is-looksharp',
+    question: 'What is LookSharp?',
     answer:
-      'Anyone with a supported smartphone can sign up. Specific offers and survey campaigns may include location-based eligibility terms.'
+      'LookSharp is a Ghana-focused discounts and rewards platform. You can discover exclusive offers from top brands, earn points by completing short surveys, and convert those points into real cash.'
   },
   {
-    id: 'payout',
-    group: 'rewards',
-    question: 'How long does payout take after redemption?',
+    id: 'how-earn-rewards',
+    question: 'How do I earn rewards?',
     answer:
-      'Most withdrawals are processed quickly, often within the same day. Timing varies by mobile money provider and account verification status.'
+      'Simply browse available offers and use discounts when you shop. You can also earn bonus points by completing quick surveys and sharing your opinions with brands.'
   },
   {
-    id: 'platforms',
-    group: 'platform',
-    question: 'Is LookSharp available on web, iOS, and Android?',
+    id: 'free-to-use',
+    question: 'Is LookSharp free to use?',
     answer:
-      'Yes. You can start on web and also install the iOS or Android app from the official stores for the same rewards journey.'
+      'Yes! LookSharp is completely free to download and use. There are no hidden fees or subscription charges. You earn rewards just by using the platform.'
   },
   {
-    id: 'offer-data',
-    group: 'offers',
-    question: 'Are the offers shown on this page live right now?',
+    id: 'cashout',
+    question: 'How do I cash out my points?',
     answer:
-      'The featured cards shown here are representative placeholders for product marketing. In-app offers update by campaign and partner availability.'
+      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money or bank account.'
+  },
+  {
+    id: 'brands',
+    question: 'Which brands are on LookSharp?',
+    answer:
+      'We partner with over 1,200 local and international brands across categories like shopping, food, tech, fashion, travel, and more. New offers are added daily.'
+  },
+  {
+    id: 'data-safety',
+    question: 'Is my data safe?',
+    answer:
+      'Absolutely. We use bank-level encryption and are data privacy certified. Your personal information is never sold to third parties. Read our Privacy Policy for full details.'
   }
 ];
 
 export const legalPlaceholderNotes = {
   privacy:
-    'Placeholder policy for staging. Replace with approved legal text before production launch.',
+    'LookSharp (Insightis Africa) is committed to protecting your privacy while you use our mobile and web experiences.',
   terms:
-    'Placeholder terms for staging. Replace with approved legal text before production launch.'
+    'By using LookSharp, you agree to the platform terms that govern rewards, offers, and responsible account use.'
 };

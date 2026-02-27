@@ -4,52 +4,64 @@ import { useEffect, useState } from 'react';
 
 import {
   getConsentState,
-  openAnalyticsIfConsented,
   setConsentState,
-  trackConsentUpdated,
-  trackLandingView
+  trackConsentUpdated
 } from '@/lib/analytics';
+
+const LEGACY_CONSENT_KEY = 'looksharp_analytics_consent';
+const LOVABLE_CONSENT_KEY = 'cookie-consent';
 
 export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = getConsentState();
-    if (!consent) {
-      setVisible(true);
+    const existingLovable = window.localStorage.getItem(LOVABLE_CONSENT_KEY);
+    const existingLegacy = getConsentState();
+
+    if (existingLovable || existingLegacy) {
       return;
     }
 
-    openAnalyticsIfConsented();
-    if (consent === 'granted' && window.location.pathname === '/') {
-      trackLandingView(window.location.pathname);
-    }
+    const timeout = window.setTimeout(() => {
+      setVisible(true);
+    }, 1500);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   useEffect(() => {
-    const handler = (): void => {
+    const openHandler = (): void => {
+      window.localStorage.removeItem(LOVABLE_CONSENT_KEY);
+      window.localStorage.removeItem(LEGACY_CONSENT_KEY);
       setVisible(true);
     };
 
-    window.addEventListener('looksharp:open-consent', handler);
-    window.addEventListener('open-cookie-settings', handler);
-    document.addEventListener('looksharp:open-consent', handler);
-    document.addEventListener('open-cookie-settings', handler);
+    document.addEventListener('open-cookie-settings', openHandler);
+    document.addEventListener('looksharp:open-consent', openHandler);
+    window.addEventListener('open-cookie-settings', openHandler);
+    window.addEventListener('looksharp:open-consent', openHandler);
+
     return () => {
-      window.removeEventListener('looksharp:open-consent', handler);
-      window.removeEventListener('open-cookie-settings', handler);
-      document.removeEventListener('looksharp:open-consent', handler);
-      document.removeEventListener('open-cookie-settings', handler);
+      document.removeEventListener('open-cookie-settings', openHandler);
+      document.removeEventListener('looksharp:open-consent', openHandler);
+      window.removeEventListener('open-cookie-settings', openHandler);
+      window.removeEventListener('looksharp:open-consent', openHandler);
     };
   }, []);
 
-  const handleConsent = (value: 'granted' | 'denied'): void => {
-    setConsentState(value);
+  const accept = (): void => {
+    window.localStorage.setItem(LOVABLE_CONSENT_KEY, 'accepted');
+    setConsentState('granted');
+    trackConsentUpdated('granted');
     setVisible(false);
-    trackConsentUpdated(value);
-    if (value === 'granted' && window.location.pathname === '/') {
-      trackLandingView(window.location.pathname);
-    }
+  };
+
+  const decline = (): void => {
+    window.localStorage.setItem(LOVABLE_CONSENT_KEY, 'declined');
+    setConsentState('denied');
+    setVisible(false);
   };
 
   if (!visible) {
@@ -58,16 +70,19 @@ export function ConsentBanner() {
 
   return (
     <aside className="consent-banner" aria-label="Cookie consent">
-      <p>
-        We use analytics cookies to understand CTA performance and improve this
-        page. Accept to enable analytics tracking.
-      </p>
+      <div className="consent-copy">
+        <p className="consent-title">We use cookies</p>
+        <p>
+          We use cookies to enhance your experience and analyze usage. Read our{' '}
+          <a href="/privacy">Privacy Policy</a>.
+        </p>
+      </div>
       <div className="consent-actions">
-        <button type="button" onClick={() => handleConsent('denied')}>
+        <button type="button" className="consent-decline" onClick={decline}>
           Decline
         </button>
-        <button type="button" onClick={() => handleConsent('granted')}>
-          Accept analytics
+        <button type="button" className="consent-accept" onClick={accept}>
+          Accept All
         </button>
       </div>
     </aside>
