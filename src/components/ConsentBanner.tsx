@@ -32,8 +32,14 @@ export function ConsentBanner() {
     };
 
     window.addEventListener('looksharp:open-consent', handler);
+    window.addEventListener('open-cookie-settings', handler);
+    document.addEventListener('looksharp:open-consent', handler);
+    document.addEventListener('open-cookie-settings', handler);
     return () => {
       window.removeEventListener('looksharp:open-consent', handler);
+      window.removeEventListener('open-cookie-settings', handler);
+      document.removeEventListener('looksharp:open-consent', handler);
+      document.removeEventListener('open-cookie-settings', handler);
     };
   }, []);
 

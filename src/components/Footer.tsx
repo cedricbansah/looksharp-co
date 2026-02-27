@@ -4,6 +4,12 @@ import { landingConfig } from '@/lib/config';
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const openCookieSettings = (): void => {
+    window.dispatchEvent(new Event('looksharp:open-consent'));
+    window.dispatchEvent(new CustomEvent('open-cookie-settings'));
+    document.dispatchEvent(new Event('looksharp:open-consent'));
+    document.dispatchEvent(new CustomEvent('open-cookie-settings'));
+  };
 
   return (
     <footer className="site-footer">
@@ -27,7 +33,7 @@ export function Footer() {
         <a href={`mailto:${landingConfig.supportEmail}`}>Contact</a>
         <button
           type="button"
-          onClick={() => window.dispatchEvent(new Event('looksharp:open-consent'))}
+          onClick={openCookieSettings}
         >
           Cookie settings
         </button>
