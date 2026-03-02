@@ -1,3 +1,5 @@
+import { CtaGroup } from '@/components/CtaGroup';
+
 export function FinalCtaSection() {
   return (
     <section id="cta" className="final-cta-section">
@@ -11,33 +13,7 @@ export function FinalCtaSection() {
           exclusive deals every day.
         </p>
 
-        <div className="hero-cta-row final-cta-row">
-          <a href="#cta" className="cta-primary">
-            Start Saving
-          </a>
-          <a href="#cta" className="cta-ghost">
-            <img
-              src="/icons/stores/app-store.svg"
-              alt=""
-              aria-hidden="true"
-              className="cta-store-logo"
-              width={16}
-              height={16}
-            />
-            iOS App
-          </a>
-          <a href="#cta" className="cta-ghost">
-            <img
-              src="/icons/stores/play-store.svg"
-              alt=""
-              aria-hidden="true"
-              className="cta-store-logo"
-              width={16}
-              height={16}
-            />
-            Android App
-          </a>
-        </div>
+        <CtaGroup section="final-cta" className="hero-cta-row final-cta-row" />
       </div>
     </section>
   );

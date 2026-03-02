@@ -1,4 +1,5 @@
 import { heroContent } from '@/content/site';
+import { CtaGroup } from '@/components/CtaGroup';
 
 export function HeroSection() {
   return (
@@ -16,33 +17,7 @@ export function HeroSection() {
 
         <p className="hero-description">{heroContent.description}</p>
 
-        <div className="hero-cta-row">
-          <a href="#cta" className="cta-primary">
-            Start Saving
-          </a>
-          <a href="#cta" className="cta-ghost">
-            <img
-              src="/icons/stores/app-store.svg"
-              alt=""
-              aria-hidden="true"
-              className="cta-store-logo"
-              width={16}
-              height={16}
-            />
-            iOS App
-          </a>
-          <a href="#cta" className="cta-ghost">
-            <img
-              src="/icons/stores/play-store.svg"
-              alt=""
-              aria-hidden="true"
-              className="cta-store-logo"
-              width={16}
-              height={16}
-            />
-            Android App
-          </a>
-        </div>
+        <CtaGroup section="hero" className="hero-cta-row" />
 
         <div className="hero-proof-row">
           {heroContent.heroValuePoints.map((point) => (

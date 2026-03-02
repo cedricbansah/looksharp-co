@@ -17,6 +17,8 @@ interface CtaItem {
   label: string;
   href: string;
   newTab: boolean;
+  icon?: string;
+  className: string;
 }
 
 const ctaItems: CtaItem[] = [
@@ -24,19 +26,24 @@ const ctaItems: CtaItem[] = [
     target: 'web',
     label: 'Start Saving',
     href: landingConfig.webAppUrl,
-    newTab: false
+    newTab: false,
+    className: 'cta-primary'
   },
   {
     target: 'ios',
     label: 'iOS App',
     href: landingConfig.iosAppUrl,
-    newTab: true
+    newTab: true,
+    icon: '/icons/stores/app-store.svg',
+    className: 'cta-ghost'
   },
   {
     target: 'android',
     label: 'Android App',
     href: landingConfig.androidAppUrl,
-    newTab: true
+    newTab: true,
+    icon: '/icons/stores/play-store.svg',
+    className: 'cta-ghost'
   }
 ];
 
@@ -77,12 +84,22 @@ export function CtaGroup({ section, className }: CtaGroupProps) {
         return (
           <a
             key={item.target}
-            className={`cta-button cta-${item.target}`}
+            className={item.className}
             href={href}
             target={item.newTab ? '_blank' : undefined}
             rel={item.newTab ? 'noreferrer noopener' : undefined}
             onClick={(event) => handleClick(event, item)}
           >
+            {item.icon ? (
+              <img
+                src={item.icon}
+                alt=""
+                aria-hidden="true"
+                className="cta-store-logo"
+                width={16}
+                height={16}
+              />
+            ) : null}
             {item.label}
           </a>
         );

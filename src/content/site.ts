@@ -146,21 +146,21 @@ export const featuredOffers: OfferTile[] = [
 
 export const proofStats: ProofStat[] = [
   {
-    id: 'active-users',
-    label: 'Active Users',
-    value: '500K+',
+    id: 'active-offers',
+    label: 'Active Offers',
+    value: '62',
     isPlaceholder: true
   },
   {
     id: 'rewards-paid',
-    label: 'Rewards Paid Out',
-    value: 'GH₵ 12M+',
+    label: 'Free Giveaways',
+    value: 'UNLIMITED',
     isPlaceholder: true
   },
   {
     id: 'brand-partners',
     label: 'Brand Partners',
-    value: '1,200+',
+    value: '85',
     isPlaceholder: true
   },
   {
@@ -238,13 +238,13 @@ export const faqs: FaqItem[] = [
     id: 'free-to-use',
     question: 'Is LookSharp free to use?',
     answer:
-      'Yes! LookSharp is completely free to download and use. There are no hidden fees or subscription charges. You earn rewards just by using the platform.'
+      'Yes! LookSharp is free to download and use. There are no hidden fees. You can start saving and earning rewards by using the platform.'
   },
   {
     id: 'cashout',
     question: 'How do I cash out my points?',
     answer:
-      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money or bank account after completing a KYC verification process.'
+      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money account after completing a KYC verification process.'
   },
   {
     id: 'brands',
