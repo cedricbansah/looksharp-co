@@ -1,0 +1,27 @@
+{
+  "name": "looksharp-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node -e \"console.log('No automated tests configured yet')\"",
+    "check:launch-gates": "node scripts/check-launch-gates.mjs"
+  },
+  "dependencies": {
+    "next": "^15.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.21.0",
+    "eslint-config-next": "^15.2.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  }
+}
