@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { navItems } from '@/content/site';
+import { StartSavingLink } from '@/components/StartEarningLink';
 
 export function StickyHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,9 +71,7 @@ export function StickyHeader() {
           </nav>
 
           <div className="header-actions">
-            <a href="#cta" className="header-outline-cta">
-              Start Saving
-            </a>
+            <StartSavingLink section="header" className="header-outline-cta" />
             <a href="#cta" className="header-solid-cta">
               Get the App
             </a>
@@ -107,9 +106,7 @@ export function StickyHeader() {
                 {item.label}
               </a>
             ))}
-            <a href="#cta" className="mobile-cta" onClick={closeMobileMenu}>
-              Start Saving
-            </a>
+            <StartSavingLink section="mobile-menu" className="mobile-cta" />
             <a href="#cta" className="mobile-cta mobile-cta-solid" onClick={closeMobileMenu}>
               Get the App
             </a>
