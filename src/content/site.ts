@@ -244,7 +244,7 @@ export const faqs: FaqItem[] = [
     id: 'cashout',
     question: 'How do I cash out my points?',
     answer:
-      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money or bank account after completing a KYC verification process.'
+      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money account after completing a KYC verification process.'
   },
   {
     id: 'brands',
