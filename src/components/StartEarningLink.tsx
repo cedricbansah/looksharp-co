@@ -6,15 +6,15 @@ import { appendAttributionToUrl, extractAttribution } from '@/lib/attribution';
 import { landingConfig } from '@/lib/config';
 import { trackCtaClick } from '@/lib/analytics';
 
-interface StartEarningLinkProps {
+interface StartSavingLinkProps {
   section: string;
   className?: string;
 }
 
-export function StartEarningLink({
+export function StartSavingLink({
   section,
   className
-}: StartEarningLinkProps) {
+}: StartSavingLinkProps) {
   const [href, setHref] = useState(landingConfig.webAppUrl);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function StartEarningLink({
     const attribution = extractAttribution(params);
     const resolvedHref = appendAttributionToUrl(landingConfig.webAppUrl, attribution);
     event.currentTarget.href = resolvedHref;
-    trackCtaClick('web', section, 'Start Earning');
+    trackCtaClick('web', section, 'Start Saving');
   };
 
   return (
@@ -37,7 +37,7 @@ export function StartEarningLink({
       href={href}
       onClick={handleClick}
     >
-      Start Earning
+      Start Saving
     </a>
   );
 }

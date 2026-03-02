@@ -22,7 +22,7 @@ interface CtaItem {
 const ctaItems: CtaItem[] = [
   {
     target: 'web',
-    label: 'Start Earning',
+    label: 'Start Saving',
     href: landingConfig.webAppUrl,
     newTab: false
   },

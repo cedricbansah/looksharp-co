@@ -71,7 +71,7 @@ export function StickyHeader() {
 
           <div className="header-actions">
             <a href="#cta" className="header-outline-cta">
-              Start Earning
+              Start Saving
             </a>
             <a href="#cta" className="header-solid-cta">
               Get the App
@@ -108,7 +108,7 @@ export function StickyHeader() {
               </a>
             ))}
             <a href="#cta" className="mobile-cta" onClick={closeMobileMenu}>
-              Start Earning
+              Start Saving
             </a>
             <a href="#cta" className="mobile-cta mobile-cta-solid" onClick={closeMobileMenu}>
               Get the App

@@ -91,7 +91,7 @@ export const steps = [
   {
     title: 'Discover Deals',
     description:
-      'Browse exclusive discounts from everyday brands in Accra, Kumasi, Takoradi, and beyond.'
+      'Browse exclusive discounts from everyday brands all over Ghana and the world'
   },
   {
     title: 'Complete & Earn',
@@ -101,7 +101,7 @@ export const steps = [
   {
     title: 'Cash Out',
     description:
-      'Convert your earned points into real cash and withdraw to supported Ghana payout channels.'
+      'Convert your earned points into real cash and withdraw straight to your mobile money account'
   }
 ];
 
@@ -174,7 +174,7 @@ export const proofStats: ProofStat[] = [
 export const assuranceItems: AssuranceItem[] = [
   {
     id: 'encryption',
-    title: 'Bank-level encryption',
+    title: 'Secure data encryption',
     description: 'Security controls protect account and rewards activity.'
   },
   {
@@ -226,7 +226,7 @@ export const faqs: FaqItem[] = [
     id: 'what-is-looksharp',
     question: 'What is LookSharp?',
     answer:
-      'LookSharp is a Ghana-focused discounts and rewards platform. You can discover exclusive offers from top brands, earn points by completing short surveys, and convert those points into real cash.'
+      'LookSharp is Ghana\'s first discounts and rewards platform. You can discover exclusive offers from top brands, earn points by completing short surveys, and convert those points into real cash.'
   },
   {
     id: 'how-earn-rewards',
@@ -244,19 +244,19 @@ export const faqs: FaqItem[] = [
     id: 'cashout',
     question: 'How do I cash out my points?',
     answer:
-      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money or bank account.'
+      'Once you have accumulated enough points, you can convert them to cash directly within the app. Withdrawals are processed to your preferred mobile money or bank account after completing a KYC verification process.'
   },
   {
     id: 'brands',
     question: 'Which brands are on LookSharp?',
     answer:
-      'We partner with over 1,200 local and international brands across categories like shopping, food, tech, fashion, travel, and more. New offers are added daily.'
+      'We partner with hundreds of local and international brands across categories like shopping, food, tech, fashion, travel, and more. New offers are added daily.'
   },
   {
     id: 'data-safety',
     question: 'Is my data safe?',
     answer:
-      'Absolutely. We use bank-level encryption and are data privacy certified. Your personal information is never sold to third parties. Read our Privacy Policy for full details.'
+      'Absolutely. Our data storage systems are highly encrypted and we are data privacy certified. Your personal information is never sold to third parties. Read our Privacy Policy for full details.'
   }
 ];
 

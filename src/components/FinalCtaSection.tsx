@@ -13,7 +13,7 @@ export function FinalCtaSection() {
 
         <div className="hero-cta-row final-cta-row">
           <a href="#cta" className="cta-primary">
-            Start Earning
+            Start Saving
           </a>
           <a href="#cta" className="cta-ghost">
             <img
