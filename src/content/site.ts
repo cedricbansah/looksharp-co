@@ -148,7 +148,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'active-offers',
     label: 'Active Offers',
-    value: '62',
+    value: '62+',
     isPlaceholder: true
   },
   {
@@ -160,7 +160,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'brand-partners',
     label: 'Brand Partners',
-    value: '85',
+    value: '85+',
     isPlaceholder: true
   },
   {
