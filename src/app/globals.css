@@ -547,11 +547,13 @@ section {
 }
 
 .offer-card {
-  border-radius: 14px;
-  overflow: hidden;
+  border-radius: 16px;
+  overflow: visible;
   border: 1px solid hsl(var(--border));
   background: hsl(var(--card));
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .offer-card:hover {
@@ -560,114 +562,145 @@ section {
   border-color: hsl(var(--primary) / 0.3);
 }
 
-.offer-main {
-  padding: 22px 22px 16px;
+/* Poster + avatar overlap wrapper */
+.offer-poster-outer {
+  position: relative;
 }
 
-.offer-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+/* Poster image */
+.offer-poster-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  background: hsl(var(--muted));
 }
 
+.offer-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Category badge overlaid on image */
 .offer-badge {
-  font-size: 0.7rem;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.68rem;
   font-weight: 700;
   border-radius: 999px;
-  padding: 4px 9px;
+  padding: 4px 10px;
+  background: #fff;
+  color: hsl(var(--foreground));
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  z-index: 1;
 }
 
-.offer-badge-default {
-  background: hsl(var(--primary) / 0.1);
-  color: hsl(var(--primary));
-}
-
-.offer-badge-secondary {
-  background: hsl(var(--secondary) / 0.1);
-  color: hsl(var(--secondary));
-}
-
-.offer-badge-destructive {
-  background: hsl(var(--destructive) / 0.15);
-  color: hsl(var(--destructive));
-}
-
-.offer-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: inline-flex;
+/* Circular brand avatar overlapping image/body seam */
+.offer-avatar-wrap {
+  position: absolute;
+  bottom: -24px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  background: hsl(var(--muted));
+  z-index: 2;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: hsl(var(--primary) / 0.08);
 }
 
-.offer-image img {
-  width: 24px;
-  height: 24px;
+.offer-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.offer-brand {
-  font-size: 0.72rem;
-  color: hsl(var(--muted-foreground) / 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.offer-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+  font-size: 1.1rem;
   font-weight: 700;
+}
+
+.offer-avatar-fallback::after {
+  content: attr(data-initial);
+}
+
+/* Card body */
+.offer-body {
+  padding: 32px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.offer-brand-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: hsl(var(--primary));
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   margin-bottom: 6px;
 }
 
-.offer-card h3 {
-  font-size: 1.07rem;
-  line-height: 1.35;
-  margin-bottom: 8px;
-}
-
-.offer-savings {
-  color: hsl(var(--primary));
-  font-size: 0.9rem;
+.offer-title {
+  font-size: 1.05rem;
   font-weight: 700;
+  line-height: 1.35;
+  color: hsl(var(--foreground));
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.offer-bottom {
-  border-top: 1px solid hsl(var(--border));
-  padding: 14px 22px 20px;
-}
-
-.offer-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.offer-category-pill {
-  background: hsl(var(--muted));
-  color: hsl(var(--muted-foreground) / 0.84);
-  border-radius: 8px;
-  padding: 4px 8px;
-  font-size: 0.68rem;
-}
-
-.offer-time {
-  color: hsl(var(--muted-foreground) / 0.72);
-  font-size: 0.68rem;
-}
-
-.offer-disclaimer {
-  color: hsl(var(--muted-foreground) / 0.72);
-  font-size: 0.7rem;
+.offer-description {
+  font-size: 0.78rem;
+  color: hsl(var(--muted-foreground) / 0.8);
   line-height: 1.5;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.offer-end-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-bottom: 14px;
 }
 
 .offer-action {
+  display: block;
+  text-align: center;
   width: 100%;
-  margin-top: 12px;
+  margin-top: auto;
+  padding: 8px 0;
   min-height: 35px;
   border-radius: 9px;
   border: 1px solid hsl(var(--border));
   font-size: 0.78rem;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
 .offer-action:hover {

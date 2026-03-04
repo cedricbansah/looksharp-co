@@ -63,11 +63,15 @@ export interface OfferTile {
   badgeVariant?: 'default' | 'secondary' | 'destructive';
   brand: string;
   title: string;
-  savings: string;
+  description?: string;
+  savings?: string;
   category: string;
-  disclaimer: string;
+  disclaimer?: string;
   isPlaceholder: boolean;
   image?: string;
+  posterImage?: string;
+  logoImage?: string;
+  endDate?: string;
 }
 
 export interface ProofStat {

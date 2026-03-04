@@ -107,16 +107,16 @@ export const steps = [
 
 export const featuredOffers: OfferTile[] = [
   {
-    id: 'offer-techmart',
-    badge: 'Hot Deal',
-    badgeVariant: 'destructive',
-    brand: 'AccraTech',
-    title: '20% Off All Electronics',
-    savings: 'Save up to GH₵ 500',
-    category: 'Tech',
-    disclaimer: 'Valid until stocks last. T&Cs apply.',
-    isPlaceholder: true,
-    image: '/icons/categories/tech.svg'
+    id: 'offer-wollo',
+    badge: 'Shopping',
+    brand: 'Wollo',
+    title: 'Sip & Save: 25% Off 10 Mugs!',
+    description: 'Buy 10 mugs and enjoy 25% off your order.',
+    category: 'Shopping',
+    endDate: '2026-06-30T00:00:00Z',
+    posterImage: '/images/offers/wollo-mugs.png',
+    logoImage: '/images/brands/wollo-logo.png',
+    isPlaceholder: false
   },
   {
     id: 'offer-freshbite',
@@ -124,11 +124,12 @@ export const featuredOffers: OfferTile[] = [
     badgeVariant: 'default',
     brand: 'FreshBite GH',
     title: 'Buy 1 Get 1 Free Meals',
-    savings: 'Save up to GH₵ 120',
+    description: 'Selected restaurants across Accra and Kumasi.',
     category: 'Food & Drink',
-    disclaimer: 'Selected restaurants only. T&Cs apply.',
-    isPlaceholder: true,
-    image: '/icons/categories/food-drink.svg'
+    endDate: '2026-07-31T00:00:00Z',
+    posterImage: '/images/offers/freshbite-meals.jpg',
+    logoImage: '/icons/categories/food-drink.svg',
+    isPlaceholder: true
   },
   {
     id: 'offer-stylehub',
@@ -136,11 +137,12 @@ export const featuredOffers: OfferTile[] = [
     badgeVariant: 'secondary',
     brand: 'StyleHub Ghana',
     title: '40% Off Fashion Week',
-    savings: 'Save up to GH₵ 350',
+    description: 'Online orders only. Huge savings across all styles.',
     category: 'Fashion',
-    disclaimer: 'Online orders only. Ends Sunday. T&Cs apply.',
-    isPlaceholder: true,
-    image: '/icons/categories/fashion.svg'
+    endDate: '2026-06-08T00:00:00Z',
+    posterImage: '/images/offers/stylehub-fashion.jpg',
+    logoImage: '/icons/categories/fashion.svg',
+    isPlaceholder: true
   }
 ];
 

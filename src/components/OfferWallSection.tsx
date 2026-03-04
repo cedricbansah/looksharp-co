@@ -1,4 +1,11 @@
+'use client';
+
 import { featuredOffers } from '@/content/site';
+
+function formatEndDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
 
 export function OfferWallSection() {
   return (
@@ -17,28 +24,63 @@ export function OfferWallSection() {
         <div className="offers-grid">
           {featuredOffers.map((offer) => (
             <article key={offer.id} className="offer-card">
-              <div className="offer-main">
-                <div className="offer-top">
-                  <span className={`offer-badge offer-badge-${offer.badgeVariant ?? 'default'}`}>
-                    {offer.badge}
-                  </span>
-                  <span className="offer-image" aria-hidden="true">
-                    {offer.image ? (
-                      <img src={offer.image} alt="" width={32} height={32} loading="lazy" />
-                    ) : null}
-                  </span>
+              {/* Poster + avatar overlap container */}
+              <div className="offer-poster-outer">
+                <div className="offer-poster-wrap">
+                  {offer.posterImage ? (
+                    <img
+                      src={offer.posterImage}
+                      alt={`${offer.brand} offer`}
+                      className="offer-poster"
+                      loading="lazy"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  ) : null}
+                  {/* Category badge overlaid on image */}
+                  <span className="offer-badge">{offer.badge}</span>
                 </div>
-                <p className="offer-brand">{offer.brand}</p>
-                <h3>{offer.title}</h3>
-                <p className="offer-savings">{offer.savings}</p>
+                {/* Brand avatar overlapping the image/body seam — outside overflow:hidden poster */}
+                <div className="offer-avatar-wrap">
+                  {offer.logoImage ? (
+                    <img
+                      src={offer.logoImage}
+                      alt={offer.brand}
+                      className="offer-avatar-img"
+                      loading="lazy"
+                      onError={(e) => {
+                        const el = e.currentTarget as HTMLImageElement;
+                        el.style.display = 'none';
+                        const parent = el.parentElement;
+                        if (parent) {
+                          parent.setAttribute('data-initial', offer.brand.charAt(0).toUpperCase());
+                          parent.classList.add('offer-avatar-fallback');
+                        }
+                      }}
+                    />
+                  ) : (
+                    <span className="offer-avatar-fallback" data-initial={offer.brand.charAt(0).toUpperCase()} aria-hidden="true" />
+                  )}
+                </div>
               </div>
 
-              <div className="offer-bottom">
-                <div className="offer-meta">
-                  <span className="offer-category-pill">{offer.category}</span>
-                  <span className="offer-time">Limited time</span>
-                </div>
-                <p className="offer-disclaimer">{offer.disclaimer}</p>
+              {/* Card body */}
+              <div className="offer-body">
+                <p className="offer-brand-name">{offer.brand}</p>
+                <h3 className="offer-title">{offer.title}</h3>
+                {offer.description ? (
+                  <p className="offer-description">{offer.description}</p>
+                ) : null}
+                {offer.endDate ? (
+                  <p className="offer-end-date">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Ends {formatEndDate(offer.endDate)}
+                  </p>
+                ) : null}
                 <a href="#cta" className="offer-action">
                   Get Offer {'->'}
                 </a>
@@ -47,7 +89,6 @@ export function OfferWallSection() {
           ))}
         </div>
 
-        <p className="placeholder-note">* Placeholder offers shown for demonstration purposes</p>
       </div>
     </section>
   );
