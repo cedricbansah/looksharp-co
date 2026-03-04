@@ -38,9 +38,6 @@ export function TrustSection() {
           ))}
         </div>
 
-        <p className="placeholder-note">
-          * Placeholder testimonials and metrics shown for demonstration purposes
-        </p>
       </div>
     </section>
   );
