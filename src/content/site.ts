@@ -132,16 +132,16 @@ export const featuredOffers: OfferTile[] = [
     isPlaceholder: true
   },
   {
-    id: 'offer-stylehub',
-    badge: 'Limited',
+    id: 'offer-enyo',
+    badge: 'Fashion',
     badgeVariant: 'secondary',
-    brand: 'StyleHub Ghana',
-    title: '40% Off Fashion Week',
-    description: 'Online orders only. Huge savings across all styles.',
+    brand: 'Enyo',
+    title: '10% Akuvi Promo',
+    description: 'Use this code to save 10% on the Akuvi collection.',
     category: 'Fashion',
-    endDate: '2026-06-08T00:00:00Z',
-    posterImage: '/images/offers/stylehub-fashion.jpg',
-    logoImage: '/icons/categories/fashion.svg',
+    endDate: '2026-12-31T00:00:00Z',
+    posterImage: '/images/offers/enyo-offer.JPG',
+    logoImage: '/images/brands/enyo-square-logo.jpg',
     isPlaceholder: true
   }
 ];
@@ -150,7 +150,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'active-offers',
     label: 'Active Offers',
-    value: '62+',
+    value: '65+',
     isPlaceholder: true
   },
   {
@@ -162,7 +162,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'brand-partners',
     label: 'Brand Partners',
-    value: '85+',
+    value: '88+',
     isPlaceholder: true
   },
   {
