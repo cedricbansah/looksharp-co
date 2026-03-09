@@ -24,7 +24,7 @@ export function OfferWallSection() {
         <div className="offers-grid">
           {featuredOffers.map((offer) => (
             <article key={offer.id} className="offer-card">
-              {/* Poster + avatar overlap container */}
+              {/* Poster */}
               <div className="offer-poster-outer">
                 <div className="offer-poster-wrap">
                   {offer.posterImage ? (
@@ -41,28 +41,29 @@ export function OfferWallSection() {
                   {/* Category badge overlaid on image */}
                   <span className="offer-badge">{offer.badge}</span>
                 </div>
-                {/* Brand avatar overlapping the image/body seam — outside overflow:hidden poster */}
-                <div className="offer-avatar-wrap">
-                  {offer.logoImage ? (
-                    <img
-                      src={offer.logoImage}
-                      alt={offer.brand}
-                      className="offer-avatar-img"
-                      loading="lazy"
-                      onError={(e) => {
-                        const el = e.currentTarget as HTMLImageElement;
-                        el.style.display = 'none';
-                        const parent = el.parentElement;
-                        if (parent) {
-                          parent.setAttribute('data-initial', offer.brand.charAt(0).toUpperCase());
-                          parent.classList.add('offer-avatar-fallback');
-                        }
-                      }}
-                    />
-                  ) : (
-                    <span className="offer-avatar-fallback" data-initial={offer.brand.charAt(0).toUpperCase()} aria-hidden="true" />
-                  )}
-                </div>
+              </div>
+
+              {/* Brand avatar in document flow, overlapping poster/body seam via margin-top: -24px */}
+              <div className="offer-avatar-wrap">
+                {offer.logoImage ? (
+                  <img
+                    src={offer.logoImage}
+                    alt={offer.brand}
+                    className="offer-avatar-img"
+                    loading="lazy"
+                    onError={(e) => {
+                      const el = e.currentTarget as HTMLImageElement;
+                      el.style.display = 'none';
+                      const parent = el.parentElement;
+                      if (parent) {
+                        parent.setAttribute('data-initial', offer.brand.charAt(0).toUpperCase());
+                        parent.classList.add('offer-avatar-fallback');
+                      }
+                    }}
+                  />
+                ) : (
+                  <span className="offer-avatar-fallback" data-initial={offer.brand.charAt(0).toUpperCase()} aria-hidden="true" />
+                )}
               </div>
 
               {/* Card body */}
