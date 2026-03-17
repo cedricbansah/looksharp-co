@@ -127,7 +127,7 @@ export const featuredOffers: OfferTile[] = [
     description: 'Use this code at checkout to save 10% on your first purchase from Swims by Didi.',
     category: 'Fashion',
     endDate: '2026-07-31T00:00:00Z',
-    posterImage: '/images/offers/swims-by-didi-offer.jpg',
+    posterImage: '/images/offers/swims-by-didi-offer.JPG',
     logoImage: '/images/brands/swimsbydidi-logo.png',
     isPlaceholder: true
   },
