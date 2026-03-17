@@ -119,16 +119,16 @@ export const featuredOffers: OfferTile[] = [
     isPlaceholder: false
   },
   {
-    id: 'offer-freshbite',
+    id: 'offer-swimsbydidi',
     badge: 'New',
     badgeVariant: 'default',
-    brand: 'FreshBite GH',
-    title: 'Buy 1 Get 1 Free Meals',
-    description: 'Selected restaurants across Accra and Kumasi.',
-    category: 'Food & Drink',
+    brand: 'Swims by Didi',
+    title: 'Get 10% off your first order!',
+    description: 'Use this code at checkout to save 10% on your first purchase from Swims by Didi.',
+    category: 'Fashion',
     endDate: '2026-07-31T00:00:00Z',
-    posterImage: '/images/offers/freshbite-meals.jpg',
-    logoImage: '/icons/categories/food-drink.svg',
+    posterImage: '/images/offers/swims-by-didi-offer.jpg',
+    logoImage: '/images/brands/swimsbydidi-logo.png',
     isPlaceholder: true
   },
   {
@@ -150,7 +150,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'active-offers',
     label: 'Active Offers',
-    value: '65+',
+    value: '85+',
     isPlaceholder: true
   },
   {
@@ -162,7 +162,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'brand-partners',
     label: 'Brand Partners',
-    value: '88+',
+    value: '100+',
     isPlaceholder: true
   },
   {
