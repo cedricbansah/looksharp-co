@@ -1,0 +1,169 @@
+LookSharp Landing Page — Full Implementation Prompt
+PROJECT OVERVIEW
+Build a single-page marketing site for LookSharp (by Insightis Africa) — a mobile rewards app where users discover discounts, complete surveys, earn points, and convert to cash. Stack: React 18 + Vite + TypeScript + Tailwind CSS + shadcn/ui + Framer Motion + React Router DOM.
+
+1. DESIGN TOKENS (index.css)
+Import Google Font Sora (weights 300–800). Define CSS custom properties under :root using HSL triplets (no hsl() wrapper — Tailwind adds it):
+
+--font-sans: 'Sora', system-ui, sans-serif
+--background: 0 0% 100%
+--foreground: 0 3% 12%
+--card / --card-foreground: same as background/foreground
+--popover / --popover-foreground: same as background/foreground
+--primary: 177 100% 29%          (#00958C)
+--primary-foreground: 0 0% 100%
+--secondary: 193 99% 25%         (#016B81)
+--secondary-foreground: 0 0% 100%
+--muted: 122 48% 90%             (#DBF1DC)
+--muted-foreground: 187 84% 15%
+--accent: 168 87% 36%            (#0CAB8F)
+--accent-foreground: 0 0% 100%
+--destructive: 16 98% 53%        (#FD5211)
+--destructive-foreground: 0 0% 100%
+--border: 180 10% 88%
+--input: 180 10% 88%
+--ring: 177 100% 29%
+--radius: 0.75rem
+Extended brand tokens:
+
+--dark-teal: 187 84% 15%         (#063D44)
+--yellow: 59 86% 51%             (#EBE81A)
+--sky-blue: 200 93% 50%          (#0AACF6)
+--orange: 16 98% 53%             (#FD5211)
+--mint: 168 87% 36%              (#0CAB8F)
+--light-green: 122 48% 90%       (#DBF1DC)
+Gradients (as full linear-gradient() values):
+
+--gradient-hero: 135deg, dark-teal → primary → mint
+--gradient-cta: 135deg, primary → mint
+--gradient-warm: 135deg, orange → yellow
+--gradient-sky: 135deg, sky-blue → primary
+Shadows:
+
+--shadow-sm: 0 1px 3px foreground/6%
+--shadow-md: 0 4px 16px foreground/8%
+--shadow-lg: 0 8px 32px foreground/12%
+--shadow-glow: 0 0 24px primary/25%
+--shadow-card-hover: 0 12px 40px primary/15%
+Dark mode (.dark class): invert to dark-teal backgrounds, mint/light-green foregrounds, adjusted muted/border values.
+
+Utility classes in @layer utilities: .text-gradient-hero, .bg-gradient-hero, .bg-gradient-cta, .bg-gradient-warm, .bg-gradient-sky, .shadow-glow, .shadow-card-hover.
+
+2. TAILWIND CONFIG (tailwind.config.ts)
+darkMode: ["class"]
+Font: sans: ["Sora", "system-ui", "sans-serif"]
+Map ALL CSS variables to Tailwind colors using hsl(var(--token)) pattern
+Extended brand colors: dark-teal, yellow, sky-blue, orange, mint, light-green
+Custom keyframes: fade-in-up, slide-in-right, float (translateY bounce), shimmer (background-position sweep)
+Plugin: tailwindcss-animate
+3. COMPONENT ARCHITECTURE
+All components use semantic Tailwind tokens only — never raw hex/rgb. All use framer-motion for entrance animations via useInView.
+
+3a. SiteHeader
+Fixed, z-50, transparent → on scroll (>20px): bg-background/95 backdrop-blur-md with shadow and border
+Logo: rounded-lg div with bg-gradient-cta, "LS" text inside, plus "LookSharp" wordmark (Sharp in text-primary)
+Desktop nav: anchor links to #how-it-works, #offers, #trust, #faq
+Desktop CTAs: "Start Earning" (outline) + "Get the App" (default), both link to #cta
+Mobile: hamburger toggle, AnimatePresence fullscreen overlay with same links + full-width CTAs
+Height: h-16 md:h-20
+3b. HeroSection
+Full-width bg-gradient-hero section, min-height min-h-[90vh], relative with overflow-hidden
+Background: generated image (dark teal abstract), absolute fill, opacity-10, mix-blend-overlay
+Content: white text, centered on mobile, left-aligned on desktop (grid md:grid-cols-2)
+Badge: small pill with bg-white/10 border border-white/20, icon + text
+H1: text-4xl md:text-5xl lg:text-6xl font-bold text-white with line breaks
+Subtitle: text-white/80 text-lg md:text-xl max-w-lg
+3 CTAs in flex-wrap row:
+"Start Earning" — bg-yellow text-foreground font-bold hover:bg-yellow/90 (uses semantic --yellow)
+"iOS App" — variant="ghost" with border border-white/30 text-white hover:bg-white/10
+"Android App" — same ghost style with Play icon
+Right side: decorative floating card (3D tilt via Framer Motion animate-float) with sample reward info, blurred backdrop
+Bottom stat strip: 3 metrics in bg-white/10 backdrop-blur bar (e.g., "50K+ Users", "₦2M+ Earned", "500+ Brands")
+3c. CategoryRail
+Section id: none (sits between hero and how-it-works)
+bg-muted background
+Horizontal scrollable row of category pills: Shopping, Food, Travel, Entertainment, Health, Finance, Education, Lifestyle
+Each pill: icon (Lucide) + label, bg-card border border-border rounded-full px-5 py-2.5
+Hover: shadow-card-hover, scale slight, border-primary
+Uses overflow-x-auto with hidden scrollbar (scrollbar-hide or CSS)
+3d. HowItWorks
+Section id: #how-it-works
+3-column grid on desktop, stacked on mobile
+Each step: numbered circle (bg-gradient-cta text-white w-12 h-12 rounded-full), icon, title, description
+Steps: 1) Download & Sign Up, 2) Discover & Engage, 3) Earn & Cash Out
+Cards have bg-card border border-border rounded-2xl p-8, hover lifts with shadow-card-hover
+Connecting line between steps on desktop (decorative border-dashed or gradient line)
+3e. OfferWall
+Section id: #offers
+3 sample offer cards in responsive grid
+Each card structure:
+Badge (top-left): category tag in bg-primary/10 text-primary text-xs font-semibold rounded-full px-3 py-1
+Brand name (small, muted)
+Title (bold)
+Savings line: e.g., "Save up to 30%" in text-primary font-semibold
+Category label
+Disclaimer: tiny muted text
+CTA: "View Offer →" link/button
+Card: bg-card border border-border rounded-2xl overflow-hidden, hover: shadow-card-hover border-primary/30
+Top of card: colored gradient strip (4px height, bg-gradient-cta)
+Content marked as [Placeholder]
+3f. TrustSection
+Section id: #trust
+Two parts:
+Metrics row: 4 stats (Users, Rewards Paid, Brands, Rating) in grid, each with large number + label
+Assurance items: 3-4 trust badges (Shield icon + "Bank-Grade Security", "Instant Payouts", "Verified Brands", "24/7 Support")
+Testimonials: 2-3 quote cards with avatar placeholder, name, quote text
+All content marked [Placeholder]
+3g. FAQSection
+Section id: #faq
+Uses shadcn Accordion (Radix) with type="single" collapsible
+5-6 FAQ items covering: What is LookSharp, How earn, Minimum cashout, Available where, Data safety, Cost
+Max-width container (max-w-3xl mx-auto)
+Custom styling: border-border rounded-xl per item
+3h. FinalCTA
+Section id: #cta
+Full-width bg-gradient-hero section
+Centered white text: headline + subtitle
+Same 3 CTAs as hero (Start Earning yellow, iOS ghost, Android ghost)
+Decorative background: subtle radial gradients or floating shapes at low opacity
+3i. SiteFooter
+bg-dark-teal text-primary-foreground/80
+4-column grid: Brand (logo + tagline), Platform links, Legal links (react-router Link to /privacy, /terms, cookie settings button), Company (external link to insightisafrica.com, mailto)
+Cookie settings trigger: document.dispatchEvent(new CustomEvent("open-cookie-settings"))
+Bottom bar: copyright + privacy/terms links
+3j. CookieConsent
+Fixed bottom banner, z-50, appears after 1.5s delay if no localStorage consent
+Listens for open-cookie-settings custom event to re-show
+Cookie icon + text + "Decline" (outline) / "Accept All" (primary) buttons
+AnimatePresence slide-up animation
+Stores cookie-consent key as "accepted" or "declined"
+4. PAGES & ROUTING
+App.tsx: BrowserRouter with routes:
+
+/ → Index (all sections composed)
+/privacy → Privacy (uses shared LegalPage wrapper)
+/terms → Terms (uses shared LegalPage wrapper)
+* → NotFound (custom 404 with illustration, back-home CTA)
+LegalPage component: reusable wrapper with back link, title, last updated date, and children slot for content. Styled with prose-like formatting using semantic tokens.
+
+Index page: simply composes all sections in order:
+
+SiteHeader → HeroSection → CategoryRail → HowItWorks → OfferWall → TrustSection → FAQSection → FinalCTA → SiteFooter → CookieConsent
+5. KEY WIRING DETAILS
+All colors referenced via Tailwind semantic classes (bg-primary, text-muted-foreground, etc.) — never raw values in components
+Framer Motion pattern: each section wraps content in motion.div with initial={{ opacity: 0, y: 30 }}, whileInView={{ opacity: 1, y: 0 }}, viewport={{ once: true }}
+Smooth scroll: html { scroll-behavior: smooth } in base styles, nav links use href="#section-id"
+Header scroll detection: useEffect with scroll listener, useState boolean toggles class
+Mobile menu: useState toggle + AnimatePresence for mount/unmount animation
+FAQ: shadcn Accordion, no custom state management needed
+Cookie consent: localStorage for persistence, custom DOM event for re-triggering from footer
+shadcn/ui components used: Button, Accordion, Card — all auto-themed via CSS variables
+Dependencies: framer-motion, lucide-react, react-router-dom, @radix-ui/* (via shadcn), @tanstack/react-query
+Generated hero image: dark abstract teal background, saved to src/assets/hero-bg.jpg, imported as ES6 module
+6. RESPONSIVE STRATEGY
+Mobile-first Tailwind (text-4xl md:text-5xl lg:text-6xl)
+Grid breakpoints: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+Header: stacked mobile menu vs inline desktop nav at md: breakpoint
+Hero CTAs: flex-wrap so they stack naturally on small screens
+Category rail: horizontal scroll on all sizes
+Footer: single column mobile, 4-col desktop

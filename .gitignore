@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# next
+.next
+out
+
+# misc
+.DS_Store
+*.log
+
+# local env
+.env
+.env.local
+.env.*.local
+
+# local deploy scripts
+scripts/deploy-staging.sh
+scripts/deploy-production.sh
+
+# vercel/firebase
+.vercel
+.firebase

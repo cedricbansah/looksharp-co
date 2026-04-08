@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "looksharpco-staging",
+    "production": "looksharpco"
+  }
+}
