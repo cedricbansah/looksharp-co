@@ -150,7 +150,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'active-offers',
     label: 'Active Offers',
-    value: '85+',
+    value: '90+',
     isPlaceholder: true
   },
   {
