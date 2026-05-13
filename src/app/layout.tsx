@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import type { ReactNode } from 'react';
 
 import { ConsentBanner } from '@/components/ConsentBanner';
@@ -44,9 +45,40 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const gaMeasurementId = landingConfig.gaMeasurementId;
+
   return (
     <html lang="en">
       <body>
+        {gaMeasurementId ? (
+          <>
+            <Script
+              id="google-analytics-consent-default"
+              strategy="beforeInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(gaMeasurementId)});
+window.__looksharpAnalyticsLoaded = true;
+`
+              }}
+            />
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+          </>
+        ) : null}
         {children}
         <ConsentBanner />
       </body>
