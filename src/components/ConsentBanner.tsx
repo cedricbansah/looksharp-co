@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import {
   getConsentState,
+  initializeAnalyticsConsentMode,
   setConsentState,
   trackConsentUpdated
 } from '@/lib/analytics';
@@ -15,6 +16,8 @@ export function ConsentBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    initializeAnalyticsConsentMode();
+
     const existingLovable = window.localStorage.getItem(LOVABLE_CONSENT_KEY);
     const existingLegacy = getConsentState();
 

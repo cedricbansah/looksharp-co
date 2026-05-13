@@ -39,6 +39,13 @@ export const setConsentState = (value: ConsentState): void => {
 const canTrack = (): boolean =>
   typeof window !== 'undefined' && getConsentState() === 'granted';
 
+const consentSettings = (state: ConsentState) => ({
+  ad_storage: state,
+  ad_user_data: state,
+  ad_personalization: state,
+  analytics_storage: state
+});
+
 const ensureAnalyticsLoaded = (): void => {
   if (typeof window === 'undefined') {
     return;
@@ -48,23 +55,34 @@ const ensureAnalyticsLoaded = (): void => {
     return;
   }
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${landingConfig.gaMeasurementId}`;
-  document.head.appendChild(script);
-
   window.dataLayer = window.dataLayer || [];
   const gtag = (...args: unknown[]): void => {
     window.dataLayer.push(args);
   };
   window.gtag = gtag;
 
-  gtag('js', new Date());
-  gtag('config', landingConfig.gaMeasurementId, {
-    send_page_view: false
+  gtag('consent', 'default', {
+    ...consentSettings('denied'),
+    wait_for_update: 500
   });
+  gtag('js', new Date());
+  gtag('config', landingConfig.gaMeasurementId);
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${landingConfig.gaMeasurementId}`;
+  document.head.appendChild(script);
 
   window.__looksharpAnalyticsLoaded = true;
+};
+
+const updateGoogleConsent = (state: ConsentState): void => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  ensureAnalyticsLoaded();
+  window.gtag?.('consent', 'update', consentSettings(state));
 };
 
 export const trackEvent = (
@@ -78,9 +96,12 @@ export const trackEvent = (
   window.gtag('event', eventName, payload);
 };
 
-export const openAnalyticsIfConsented = (): void => {
-  if (getConsentState() === 'granted') {
-    ensureAnalyticsLoaded();
+export const initializeAnalyticsConsentMode = (): void => {
+  ensureAnalyticsLoaded();
+
+  const consent = getConsentState();
+  if (consent) {
+    updateGoogleConsent(consent);
   }
 };
 
@@ -99,8 +120,9 @@ export const trackLandingView = (path: string): void => {
 };
 
 export const trackConsentUpdated = (state: ConsentState): void => {
+  updateGoogleConsent(state);
+
   if (state === 'granted') {
-    ensureAnalyticsLoaded();
     trackEvent('consent_updated', {
       state,
       timestamp: new Date().toISOString(),
