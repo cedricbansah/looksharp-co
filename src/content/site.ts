@@ -162,7 +162,7 @@ export const proofStats: ProofStat[] = [
   {
     id: 'brand-partners',
     label: 'Brand Partners',
-    value: '100+',
+    value: '130+',
     isPlaceholder: true
   },
   {

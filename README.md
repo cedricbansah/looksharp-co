@@ -55,6 +55,10 @@ pnpm dlx firebase-tools deploy --project staging --only hosting
 pnpm dlx firebase-tools deploy --project production --only hosting
 ```
 
+## Server-Side Traffic Metrics
+
+Cookie-free aggregate traffic counts are configured from Firebase Hosting request logs, not from client-side analytics. See [docs/analytics-server-metrics.md](docs/analytics-server-metrics.md).
+
 ## GitHub Actions Secrets and Variables
 
 ### Staging environment
