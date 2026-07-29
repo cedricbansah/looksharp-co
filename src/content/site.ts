@@ -110,7 +110,7 @@ export const featuredOffers: OfferTile[] = [
     id: 'offer-wollo',
     badge: 'Shopping',
     brand: 'Wollo',
-    title: 'Sip & Save: 25% Off 10 Mugs!',
+    title: 'Sip & Save Offer',
     description: 'Buy 10 mugs and enjoy 25% off your order.',
     category: 'Shopping',
     endDate: '2026-06-30T00:00:00Z',
