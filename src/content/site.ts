@@ -16,16 +16,11 @@ export const navItems = [
 
 export const heroContent = {
   badge: 'Discover. Save. Earn.',
-  title: 'Shop Smarter, Earn Rewards Every Day',
+  title: 'Save on what you love. Earn for what you know.',
   description:
     'Unlock exclusive discounts from top brands across Ghana, complete quick surveys to earn points, and convert them into real cash through your preferred payout channel.',
-  trustMicroCopy: 'Exclusive Discounts • Earn Real Cash • Safe & Trusted',
-  valueHighlights: [
-    { value: '50K+', label: 'Users' },
-    { value: 'GH₵ 2M+', label: 'Earned' },
-    { value: '500+', label: 'Brands' }
-  ],
-  heroValuePoints: ['Exclusive Discounts', 'Earn Real Cash', 'Safe & Trusted']
+  trustMicroCopy: 'Built in Ghana. Made for everyday value.',
+  heroValuePoints: ['Local offers', 'Survey rewards', 'Mobile money cashout']
 };
 
 export const dealCategories: DealCategory[] = [
@@ -34,56 +29,64 @@ export const dealCategories: DealCategory[] = [
     title: 'Shopping',
     description: 'Everyday product deals and checkout discounts.',
     tag: 'CAT-01',
-    icon: '/icons/categories/shopping.svg'
+    icon: '/icons/categories/shopping.svg',
+    image: '/images/categories/shopping.jpg?v=ghana-2'
   },
   {
     id: 'food-drink',
     title: 'Food & Drink',
     description: 'Meal vouchers and buy-one-get-one offers.',
     tag: 'CAT-02',
-    icon: '/icons/categories/food-drink.svg'
+    icon: '/icons/categories/food-drink.svg',
+    image: '/images/categories/food.jpg?v=ghana-2'
   },
   {
     id: 'travel',
     title: 'Travel',
     description: 'Transport credits and destination specials.',
     tag: 'CAT-03',
-    icon: '/icons/categories/travel.svg'
+    icon: '/icons/categories/travel.svg',
+    image: '/images/categories/travel.jpg?v=ghana-2'
   },
   {
     id: 'tech',
     title: 'Tech',
     description: 'Gadgets, bundles, and electronics deals.',
     tag: 'CAT-04',
-    icon: '/icons/categories/tech.svg'
+    icon: '/icons/categories/tech.svg',
+    image: '/images/categories/tech.jpg?v=ghana-1'
   },
   {
     id: 'health',
     title: 'Health',
     description: 'Wellness offers and pharmacy savings.',
     tag: 'CAT-05',
-    icon: '/icons/categories/health.svg'
+    icon: '/icons/categories/health.svg',
+    image: '/images/categories/health.jpg?v=ghana-1'
   },
   {
     id: 'fashion',
     title: 'Fashion',
     description: 'Style drops and limited-time fashion codes.',
     tag: 'CAT-06',
-    icon: '/icons/categories/fashion.svg'
+    icon: '/icons/categories/fashion.svg',
+    image: '/images/categories/fashion.jpg?v=ghana-1'
   },
   {
     id: 'auto',
     title: 'Auto',
     description: 'Fuel, rides, and service promotions.',
     tag: 'CAT-07',
-    icon: '/icons/categories/auto.svg'
+    icon: '/icons/categories/auto.svg',
+    image: '/images/categories/auto.jpg?v=ghana-1'
   },
   {
     id: 'education',
     title: 'Education',
     description: 'Books, courses, and learning discounts.',
     tag: 'CAT-08',
-    icon: '/icons/categories/education.svg'
+    icon: '/icons/categories/education.svg',
+    image: '/images/categories/education.jpg?v=ghana-1'
   }
 ];
 
@@ -116,7 +119,8 @@ export const featuredOffers: OfferTile[] = [
     endDate: '2026-06-30T00:00:00Z',
     posterImage: '/images/offers/wollo-mugs.png',
     logoImage: '/images/brands/wollo-logo.png',
-    isPlaceholder: false
+    isPlaceholder: false,
+    featured: false
   },
   {
     id: 'offer-swimsbydidi',
@@ -129,7 +133,8 @@ export const featuredOffers: OfferTile[] = [
     endDate: '2026-07-31T00:00:00Z',
     posterImage: '/images/offers/swims-by-didi-offer.JPG',
     logoImage: '/images/brands/swimsbydidi-logo.png',
-    isPlaceholder: true
+    isPlaceholder: false,
+    featured: true
   },
   {
     id: 'offer-enyo',
@@ -142,7 +147,8 @@ export const featuredOffers: OfferTile[] = [
     endDate: '2026-12-31T00:00:00Z',
     posterImage: '/images/offers/enyo-offer.JPG',
     logoImage: '/images/brands/enyo-square-logo.jpg',
-    isPlaceholder: true
+    isPlaceholder: false,
+    featured: true
   }
 ];
 
@@ -176,23 +182,27 @@ export const proofStats: ProofStat[] = [
 export const assuranceItems: AssuranceItem[] = [
   {
     id: 'encryption',
-    title: 'Secure data encryption',
-    description: 'Security controls protect account and rewards activity.'
+    title: 'Your privacy comes first',
+    description: 'See how LookSharp handles personal information and account data.',
+    href: '/privacy',
+    linkLabel: 'Read our privacy policy'
   },
   {
     id: 'privacy-certified',
-    title: 'Data privacy certified',
-    description: 'Platform operations follow privacy-oriented safeguards.'
+    title: 'Clear reward rules',
+    description: 'Offer availability, eligibility, and redemption terms are shown before you act.',
+    href: '/terms',
+    linkLabel: 'Review the terms'
   },
   {
     id: 'instant-withdrawals',
-    title: 'Instant withdrawals',
-    description: 'Redeemed rewards can move quickly to supported payouts.'
+    title: 'Built for mobile money',
+    description: 'Eligible rewards can be converted and sent to a supported mobile money account.'
   },
   {
     id: 'support',
-    title: '24/7 support',
-    description: 'Support access is available for account and payout issues.'
+    title: 'Real people, real support',
+    description: 'Get help with your account, offers, or reward redemptions when you need it.'
   }
 ];
 

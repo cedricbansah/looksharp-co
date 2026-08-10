@@ -1,20 +1,17 @@
 import { CtaGroup } from '@/components/CtaGroup';
+import { Reveal } from '@/components/Reveal';
 
 export function FinalCtaSection() {
   return (
     <section id="cta" className="final-cta-section">
-      <div className="cta-bg-shape cta-bg-shape-right" aria-hidden="true" />
-      <div className="cta-bg-shape cta-bg-shape-left" aria-hidden="true" />
+      <img src="/brand/pulsepop-yellow.svg" alt="" className="cta-brand-shape" aria-hidden="true" />
 
-      <div className="section-inner centered cta-content">
-        <h2>Ready to Start Saving?</h2>
-        <p>
-          Join hundreds of thousands of users already earning rewards and unlocking
-          exclusive deals every day.
-        </p>
-
-        <CtaGroup section="final-cta" className="hero-cta-row final-cta-row" />
-      </div>
+      <Reveal className="section-inner cta-content">
+        <span className="section-kicker">Your next win is waiting</span>
+        <h2>Look sharp.<br />Spend smarter.</h2>
+        <p>Discover offers, earn eligible rewards, and keep more of your money.</p>
+        <CtaGroup section="final-cta" className="final-cta-row" />
+      </Reveal>
     </section>
   );
 }

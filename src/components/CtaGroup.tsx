@@ -10,6 +10,7 @@ import type { CtaTarget } from '@/lib/types';
 interface CtaGroupProps {
   section: string;
   className?: string;
+  compact?: boolean;
 }
 
 interface CtaItem {
@@ -57,7 +58,7 @@ const buildWebHref = (): string => {
   return appendAttributionToUrl(landingConfig.webAppUrl, attribution);
 };
 
-export function CtaGroup({ section, className }: CtaGroupProps) {
+export function CtaGroup({ section, className, compact = false }: CtaGroupProps) {
   const [webHref, setWebHref] = useState(landingConfig.webAppUrl);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ export function CtaGroup({ section, className }: CtaGroupProps) {
 
   return (
     <div className={`cta-group ${className ?? ''}`.trim()}>
-      {ctaItems.map((item) => {
+      {ctaItems.filter((item) => !compact || item.target === 'web').map((item) => {
         const href = item.target === 'web' ? webHref : item.href;
 
         return (

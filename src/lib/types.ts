@@ -55,6 +55,7 @@ export interface DealCategory {
   description: string;
   tag: string;
   icon?: string;
+  image?: string;
 }
 
 export interface OfferTile {
@@ -72,6 +73,8 @@ export interface OfferTile {
   posterImage?: string;
   logoImage?: string;
   endDate?: string;
+  href?: string;
+  featured?: boolean;
 }
 
 export interface ProofStat {
@@ -85,4 +88,15 @@ export interface AssuranceItem {
   id: string;
   title: string;
   description: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+export interface LandingCta {
+  target: CtaTarget;
+  label: string;
+  href: string;
+  newTab: boolean;
+  icon?: string;
+  variant: 'primary' | 'secondary' | 'store';
 }

@@ -9,11 +9,13 @@ import { trackCtaClick } from '@/lib/analytics';
 interface StartSavingLinkProps {
   section: string;
   className?: string;
+  label?: string;
 }
 
 export function StartSavingLink({
   section,
-  className
+  className,
+  label = 'Start Saving'
 }: StartSavingLinkProps) {
   const [href, setHref] = useState(landingConfig.webAppUrl);
 
@@ -28,7 +30,7 @@ export function StartSavingLink({
     const attribution = extractAttribution(params);
     const resolvedHref = appendAttributionToUrl(landingConfig.webAppUrl, attribution);
     event.currentTarget.href = resolvedHref;
-    trackCtaClick('web', section, 'Start Saving');
+    trackCtaClick('web', section, label);
   };
 
   return (
@@ -37,7 +39,7 @@ export function StartSavingLink({
       href={href}
       onClick={handleClick}
     >
-      Start Saving
+      {label}
     </a>
   );
 }

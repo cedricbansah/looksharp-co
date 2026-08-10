@@ -1,19 +1,20 @@
 import { faqs } from '@/content/site';
+import { Reveal } from '@/components/Reveal';
 
 export function FaqSection() {
   return (
     <section id="faq" className="faq-section">
       <div className="section-inner faq-inner">
-        <div className="section-heading centered">
+        <Reveal className="section-heading faq-heading">
           <span className="section-kicker">Got Questions?</span>
           <h2>Frequently Asked Questions</h2>
-        </div>
+        </Reveal>
 
         <div className="faq-list">
           {faqs.map((item) => (
             <details key={item.id} className="faq-item">
-              <summary>{item.question}</summary>
-              <p>{item.answer}</p>
+              <summary><span>{item.question}</span><i aria-hidden="true" /></summary>
+              <div className="faq-answer"><p>{item.answer}</p></div>
             </details>
           ))}
         </div>
