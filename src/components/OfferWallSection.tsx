@@ -1,29 +1,24 @@
 'use client';
 
 import { featuredOffers } from '@/content/site';
-
-function formatEndDate(iso: string): string {
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
+import { Reveal } from '@/components/Reveal';
 
 export function OfferWallSection() {
   return (
     <section id="offers" className="offers-section">
       <div className="section-inner">
-        <div className="offers-header">
+        <Reveal className="offers-header">
           <div>
-            <span className="section-kicker">Trending Now</span>
-            <h2>Featured Offers</h2>
+            <span className="section-kicker">Live on LookSharp</span>
+            <h2>Good finds.<br />Better prices.</h2>
+            <p>Fresh offers from brands worth knowing—picked for everyday life in Ghana.</p>
           </div>
-          <button type="button" className="offers-view-all" aria-label="View all offers">
-            View All {'->'}
-          </button>
-        </div>
+          <a href="#categories" className="offers-view-all">Browse categories <span aria-hidden="true">→</span></a>
+        </Reveal>
 
         <div className="offers-grid">
-          {featuredOffers.map((offer) => (
-            <article key={offer.id} className="offer-card">
+          {featuredOffers.map((offer, index) => (
+            <Reveal key={offer.id} className={`offer-card${index === 0 ? ' offer-card-featured' : ''}`}>
               {/* Poster */}
               <div className="offer-poster-outer">
                 <div className="offer-poster-wrap">
@@ -73,20 +68,11 @@ export function OfferWallSection() {
                 {offer.description ? (
                   <p className="offer-description">{offer.description}</p>
                 ) : null}
-                {offer.endDate ? (
-                  <p className="offer-end-date">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    Ends {formatEndDate(offer.endDate)}
-                  </p>
-                ) : null}
-                <a href="#cta" className="offer-action">
-                  Get Offer {'->'}
+                <a href={offer.href ?? '#cta'} className="offer-action" aria-label={`View ${offer.title} from ${offer.brand}`}>
+                  <span>Get offer</span><span aria-hidden="true">→</span>
                 </a>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
 

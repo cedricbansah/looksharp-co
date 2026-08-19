@@ -71,10 +71,7 @@ export function StickyHeader() {
           </nav>
 
           <div className="header-actions">
-            <StartSavingLink section="header" className="header-outline-cta" />
-            <a href="#cta" className="header-solid-cta">
-              Get the App
-            </a>
+            <StartSavingLink section="header" className="header-solid-cta" label="Get the app" />
             <button
               type="button"
               className="mobile-menu-button"
@@ -82,7 +79,8 @@ export function StickyHeader() {
               aria-controls="looksharp-mobile-menu"
               onClick={() => setIsMobileMenuOpen((open) => !open)}
             >
-              {isMobileMenuOpen ? 'Close' : 'Menu'}
+              <span className="menu-label">{isMobileMenuOpen ? 'Close' : 'Menu'}</span>
+              <span className={`menu-icon${isMobileMenuOpen ? ' is-open' : ''}`} aria-hidden="true"><i /><i /></span>
             </button>
           </div>
         </div>
@@ -106,10 +104,7 @@ export function StickyHeader() {
                 {item.label}
               </a>
             ))}
-            <StartSavingLink section="mobile-menu" className="mobile-cta" />
-            <a href="#cta" className="mobile-cta mobile-cta-solid" onClick={closeMobileMenu}>
-              Get the App
-            </a>
+            <StartSavingLink section="mobile-menu" className="mobile-cta mobile-cta-solid" label="Get the app" />
           </nav>
         </div>
       ) : null}

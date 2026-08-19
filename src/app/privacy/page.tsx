@@ -337,15 +337,6 @@ export default function PrivacyPage() {
           <a href="mailto:info@insightis.co">info@insightis.co</a><br />
           +233 59 896 7088
         </address>
-        <p>
-          For customer service inquiries, visit our Help Center.
-        </p>
-        <p>
-          If you have a disability and would like to access this Policy in an alternative
-          format, please contact us at +233 244 828 322. For comments concerning this
-          website&apos;s accessibility, please contact{' '}
-          <a href="mailto:golda@insightis.co">golda@insightis.co</a>.
-        </p>
       </section>
     </main>
   );

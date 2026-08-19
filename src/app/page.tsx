@@ -17,9 +17,9 @@ export default function HomePage() {
         <StickyHeader />
         <main>
           <HeroSection />
-          <CategoryRailSection />
-          <HowItWorksSection />
           <OfferWallSection />
+          <HowItWorksSection />
+          <CategoryRailSection />
           <TrustSection />
           <FaqSection />
           <FinalCtaSection />

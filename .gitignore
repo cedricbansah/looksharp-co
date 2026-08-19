@@ -8,6 +8,8 @@ out
 # misc
 .DS_Store
 *.log
+.playwright-cli
+output/
 
 # local env
 .env
